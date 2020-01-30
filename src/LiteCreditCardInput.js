@@ -91,6 +91,7 @@ export default class LiteCreditCardInput extends Component {
     invalidColor: "red",
     placeholderColor: "gray",
     additionalInputsProps: {},
+    onlyNumber: false,
   };
 
   componentDidMount = () => this._focus(this.props.focused);
@@ -139,7 +140,8 @@ export default class LiteCreditCardInput extends Component {
   }
 
   render() {
-    const { focused, values: { number }, inputStyle, status: { number: numberStatus } } = this.props;
+    const { values: { number }, inputStyle, status: { number: numberStatus } } = this.props;
+    const focused = this.props.onlyNumber ? "number" : this.props.focused;
     const showRightPart = focused && focused !== "number";
 
     return (
